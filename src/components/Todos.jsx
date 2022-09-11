@@ -1,5 +1,6 @@
 import useSWR from 'swr'
 import { fetcherWithToken } from '../lib/fetcherWithToken.js'
+import Items from './Items.jsx'
 
 const BASE_API_URL = 'https://todos-project-api.herokuapp.com/todos'
 
@@ -37,7 +38,17 @@ const Todos = (todos) => {
           {todos.title}
         </h2>
         <p className='py-2 text-xs font-bold leading-5'>{todos.description}</p>
-        {JSON.stringify(data)}
+        {data?.length === 0 ? (
+          <article className='rounded border bg-neutral20 p-4 text-percent'>
+            <p>No Task</p>
+          </article>
+        ) : (
+          data
+            .sort(function (a, b) {
+              return Date.parse(b.created_at) - Date.parse(a.created_at)
+            })
+            .map((items) => <Items key={items.id} {...items} />)
+        )}
 
       </section>
     </>
