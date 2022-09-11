@@ -286,15 +286,13 @@ const ModalItemMenus = ({
                 leaveFrom='opacity-100 scale-100'
                 leaveTo='opacity-0 scale-95'
               >
-                <Dialog.Panel
-                  className='h-[404px] w-full max-w-screen-md transform overflow-hidden
-                 rounded-2xl bg-white text-left align-middle shadow-xl transition-all'
-                >
+                <Dialog.Panel className='w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
+
                   <Dialog.Title
                     as='h3'
-                    className='border-b-2 p-6 py-6 text-lg font-medium leading-6 text-gray-900'
+                    className='mb-4 flex justify-start font-bold'
                   >
-                    Tambah List Item
+                    <p>Edit Task</p>
                   </Dialog.Title>
                   <form
                     ref={formRef}
