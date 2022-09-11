@@ -1,4 +1,11 @@
+import useSWR from "swr"
+import { fetcherWithToken } from "./lib/fetcherWithToken"
+
 function App() {
+  const { data } = useSWR(
+    ['https://todos-project-api.herokuapp.com/todos', import.meta.env.VITE_API_TOKEN],
+    fetcherWithToken
+  )
 
   return (
     <>
@@ -8,7 +15,7 @@ function App() {
         </h1>
       </nav>
       <main className='mx-auto grid max-w-screen-xl grid-cols-4 gap-4 px-5'>
-       Content Here
+        {JSON.stringify(data)}
       </main>
     </>
   )
