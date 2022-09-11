@@ -1,4 +1,5 @@
 import checklistIcon from '../assets/checklist.svg'
+import ModalItemMenus from './ModalItemMenus'
 
 const Items = (items) => {
   return (
@@ -32,7 +33,12 @@ const Items = (items) => {
             )}
           </div>
           <div>
-            ...
+            <ModalItemMenus
+              name={items.name}
+              todoId={items.todo_id}
+              id={items.id}
+              progress_percentage={items.progress_percentage.toString()}
+            />
           </div>
         </div>
       </article>
