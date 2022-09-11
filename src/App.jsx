@@ -1,9 +1,12 @@
+import { Suspense } from "react"
 import useSWR from "swr"
+import Todos from "./components/Todos"
 import { fetcherWithToken } from "./lib/fetcherWithToken"
 
+const BASE_API_URL = 'https://todos-project-api.herokuapp.com/todos'
+
 function App() {
-  const { data } = useSWR(
-    ['https://todos-project-api.herokuapp.com/todos', import.meta.env.VITE_API_TOKEN],
+  const { data } = useSWR([BASE_API_URL, import.meta.env.VITE_API_TOKEN],
     fetcherWithToken
   )
 
@@ -15,7 +18,11 @@ function App() {
         </h1>
       </nav>
       <main className='mx-auto grid max-w-screen-xl grid-cols-4 gap-4 px-5'>
-        {JSON.stringify(data)}
+        <Suspense fallback={`Loading...`}>
+          {data?.map((todos) => (
+            <Todos key={todos.id} {...todos} />
+          ))}
+        </Suspense>
       </main>
     </>
   )
