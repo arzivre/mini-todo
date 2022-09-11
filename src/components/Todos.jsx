@@ -1,6 +1,7 @@
 import useSWR from 'swr'
 import { fetcherWithToken } from '../lib/fetcherWithToken.js'
 import Items from './Items.jsx'
+import ModalNewTask from './ModalNewTask.jsx'
 
 const BASE_API_URL = 'https://todos-project-api.herokuapp.com/todos'
 
@@ -49,7 +50,7 @@ const Todos = (todos) => {
             })
             .map((items) => <Items key={items.id} {...items} />)
         )}
-
+        <ModalNewTask todoId={todos.id} />
       </section>
     </>
   )
