@@ -9,6 +9,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path='*' element={<Navigate to='/v1' replace />} />
+        <Route path='/' element={<App />} />
         <Route path='/v1' element={<App />} />
       </Routes>
     </BrowserRouter>
